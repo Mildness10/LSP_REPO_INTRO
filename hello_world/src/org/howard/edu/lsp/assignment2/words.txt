@@ -1,0 +1,3 @@
+The developer doesn't know if the system.out.print works. He tried the system.out.print again, but it doesn't show any output. He'll debug the system.out.print later, but he doesn't think it'll work.
+Also, he realized the developer's job isn't easy, but the results are rewarding.
+System.out.print can be tricky to debug, but with practice, the developer becomes better.
