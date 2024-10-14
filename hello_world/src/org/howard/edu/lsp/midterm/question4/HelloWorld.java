@@ -1,6 +1,6 @@
 //Name: Mildness Akomoize
 
-package org.howard.edu.lsp.midterm;
+package org.howard.edu.lsp.midterm.question4;
 
 public class HelloWorld {
 	public static void main(String args[]) {
