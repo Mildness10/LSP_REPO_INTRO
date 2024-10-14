@@ -72,7 +72,7 @@ public class IntegerSet {
      */
     public int largest() throws IntegerSetException {
         if (set.isEmpty()) {
-            throw new IntegerSetException("Set is empty");
+            throw new IntegerSetException(null);
         }
         return Collections.max(set);
     }
@@ -84,7 +84,7 @@ public class IntegerSet {
      */
     public int smallest() throws IntegerSetException {
         if (set.isEmpty()) {
-            throw new IntegerSetException("Set is empty");
+            throw new IntegerSetException(null);
         }
         return Collections.min(set);
     }

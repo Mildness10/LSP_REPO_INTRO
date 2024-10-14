@@ -7,7 +7,7 @@ package org.howard.edu.lsp.assignment5;
  * It contains a main method that demonstrates various operations on IntegerSet objects.
  */
 public class Driver {
-
+	
     /**
      * Constructs a new Driver object.
      * This constructor is empty as the class is used solely for running the main method.
@@ -15,127 +15,89 @@ public class Driver {
     public Driver() {
         // Empty constructor
     }
-
+	
     /**
      * The main method runs a series of tests on the IntegerSet class.
      * It demonstrates the usage of various methods provided by IntegerSet.
      *
      * @param args Command line arguments (not used in this implementation)
      */
-    public static void main(String[] args) {
-        // Test IntegerSet methods
-        IntegerSet set1 = new IntegerSet();
-        IntegerSet set2 = new IntegerSet();
-
-        // Test add method
-        System.out.println("Testing add method:");
-        set1.add(1);
-        set1.add(2);
-        set1.add(3);
-        System.out.println("Set1: " + set1);
-
-        set2.add(3);
-        set2.add(4);
-        set2.add(5);
-        System.out.println("Set2: " + set2);
-
-        // Test smallest and largest methods
-        System.out.println("\nTesting smallest and largest methods:");
-        try {
-            System.out.println("Smallest value in Set1: " + set1.smallest());
-            System.out.println("Largest value in Set1: " + set1.largest());
-        } catch (IntegerSetException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-
-        // Test with empty set
-        System.out.println("\nTesting smallest and largest methods with empty set:");
-        IntegerSet emptySet = new IntegerSet();
-        try {
-            System.out.println("Smallest value in empty set: " + emptySet.smallest());
-        } catch (IntegerSetException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-        try {
-            System.out.println("Largest value in empty set: " + emptySet.largest());
-        } catch (IntegerSetException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-
-        // Test remove method
-        System.out.println("\nTesting remove method:");
-        System.out.println("Set1 before removing 2: " + set1);
-        set1.remove(2);
-        System.out.println("Set1 after removing 2: " + set1);
-
-        // Test union method
-        System.out.println("\nTesting union method:");
-        System.out.println("Set1 before union: " + set1);
-        System.out.println("Set2 before union: " + set2);
-        set1.union(set2);
-        System.out.println("Set1 after union with Set2: " + set1);
-
-        // Test intersect method
-        System.out.println("\nTesting intersect method:");
+	public static void main(String[] args) {
+		
+		// creates sets and adding values
+		IntegerSet set1 = new IntegerSet();
+		set1.add(1);
+		set1.add(2);
+		set1.add(3);
+		
+		IntegerSet set2 = new IntegerSet();
+		set2.add(3);
+		set2.add(4);
+		set2.add(5);
+		set2.add(6);
+		
+		IntegerSet set3 = new IntegerSet();
+		
+		// prints values of the sets
+		System.out.println("Value of Set1 is: " + set1.toString());
+		System.out.println("Value of Set2 is: " + set2.toString());
+		
+		// prints length of set1 and checks if set1 equals set2
+		System.out.println("The length of set1: " + set1.length());
+		System.out.println("Does set1 equal set2: "+ set1.equals(set2));
+		
+		// removes value from set2 and finding difference between set2 and set1
+		set2.remove(3);
+		System.out.println("Value of set2 after removing 3 is: " + set2.toString());
+		set2.diff(set1);
+		System.out.println("The Value of set2 after finding the difference from set1: " + set2.toString());
+		
+		// checks if set1 contains 2 and union of set1 and set2
+		System.out.println("Does set1 contain 2: "+ set1.contains(2));
+		set2.union(set1);
+		System.out.println("The Value of set2 after Union with set1: " + set2.toString());
+		
+		// finds smallest and largest values of set1 and intersecting set1 with set2
+		try {
+			System.out.println("Smallest value in Set1 is:" + set1.smallest());
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		try {
+			System.out.println("Largest value in Set1 is:" + set1.largest());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		set1.intersect(set2);
+		System.out.println("The Value of set1 after intersecting with set2: " + set1.toString());
+		
+		
+		// clears set1 and checks if it is empty
+		set1.clear();
+		System.out.println("Is set1 empty after calling the function clear: "+ set1.isEmpty());	
+		
+		// Test complement
         set1.clear();
         set1.add(1);
         set1.add(2);
         set1.add(3);
-        System.out.println("Set1 before intersect: " + set1);
-        System.out.println("Set2 before intersect: " + set2);
-        set1.intersect(set2);
-        System.out.println("Set1 after intersect with Set2: " + set1);
-
-        // Test diff method
-        System.out.println("\nTesting diff method:");
-        set1.clear();
-        set1.add(1);
-        set1.add(2);
-        set1.add(3);
-        System.out.println("Set1 before diff: " + set1);
-        System.out.println("Set2 before diff: " + set2);
-        set1.diff(set2);
-        System.out.println("Set1 after diff with Set2: " + set1);
-
-        // Test complement method
-        System.out.println("\nTesting complement method:");
-        set1.clear();
-        set1.add(1);
-        set1.add(2);
-        set2.clear();
-        set2.add(1);
-        set2.add(2);
-        set2.add(3);
-        set2.add(4);
-        System.out.println("Set1 before complement: " + set1);
-        System.out.println("Set2 (universal set): " + set2);
         set1.complement(set2);
-        System.out.println("Set1 after complement with Set2: " + set1);
-
-        // Test isEmpty method
-        System.out.println("\nTesting isEmpty method:");
-        System.out.println("Is Set1 empty? " + set1.isEmpty());
-        set1.clear();
-        System.out.println("Is Set1 empty after clear? " + set1.isEmpty());
-
-        // Test equals method
-        System.out.println("\nTesting equals method:");
-        set1.add(1);
-        set1.add(2);
-        set2.clear();
-        set2.add(2);
-        set2.add(1);
-        System.out.println("Set1: " + set1);
-        System.out.println("Set2: " + set2);
-        System.out.println("Are Set1 and Set2 equal? " + set1.equals(set2));
-
-        // Test length method
-        System.out.println("\nTesting length method:");
-        System.out.println("Length of Set1: " + set1.length());
-
-        // Test contains method
-        System.out.println("\nTesting contains method:");
-        System.out.println("Does Set1 contain 2? " + set1.contains(2));
-        System.out.println("Does Set1 contain 3? " + set1.contains(3));
-    }
+        System.out.println("Complement of Set1 relative to Set2: " + set1);
+        
+        // Tests largest and smallest on an empty set (should throw exception)
+        try {
+            System.out.println("Attempting to get largest on empty Set3: " + set3.largest());
+        } catch (IntegerSetException e) {
+            System.out.println("Correctly caught exception when getting largest on empty set: " + e.getMessage());
+        }
+        
+        try {
+            System.out.println("Attempting to get smallest on empty Set3: " + set3.smallest());
+        } catch (IntegerSetException e) {
+            System.out.println("Correctly caught exception when getting smallest on empty set: " + e.getMessage());
+        }
+        
+        // Tests the equals with a non-IntegerSet object
+        System.out.println("Set1 equals a String object: " + set1.equals("Hello"));
+	}
 }
